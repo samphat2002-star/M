@@ -1,0 +1,19 @@
+services:
+  - type: worker
+    name: apex-ai-telegram-alerts
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    autoDeploy: false
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TWELVEDATA_API_KEY
+        sync: false
+      - key: POLL_SECONDS
+        value: "60"
+      - key: PAPER_CAPITAL_USD
+        value: "10"
+      - key: RISK_PER_TRADE_PCT
+        value: "0.25"
